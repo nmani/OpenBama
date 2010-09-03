@@ -8,7 +8,7 @@ class Bill_model extends Model {
 
     function bill_search($search_string = NULL) {
         $this->load->library('sphinx');
-
+		$this->sphinx->SetServer(FULL_TEXT_SERVER,FULL_TEXT_SERVER_PORT);
         $this->sphinx->SetArrayResult(TRUE);
         $result = $this->sphinx->Query($search_string);
 

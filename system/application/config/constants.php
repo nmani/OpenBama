@@ -38,7 +38,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('DEFAULT_SESSION','1051');
 define('DEFAULT_SESSION_TITLE','2010 Regular Session');
-
+define('FULL_TEXT_SERVER','jacksonsonline.net');
+define('FULL_TEXT_SERVER_PORT',9312);
 define('MEMBER_IMAGE_LOCATION','/home/sjackson/public_html/img/members/');
 //define('MEMBER_IMAGE_LOCATION','C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\OpenBama\\img\\members\\');
 /* End of file constants.php */

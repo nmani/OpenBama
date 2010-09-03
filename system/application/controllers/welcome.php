@@ -14,9 +14,6 @@ class Welcome extends Controller {
     }
 
     function index() {
-    //$this->form_validation->set_rules('zippart1_text_box', 'Zip Code Required', 'required');
-
-
 
         $data['user_logged_in'] = $this->redux_auth->logged_in();
         $this->_load_xajax();
