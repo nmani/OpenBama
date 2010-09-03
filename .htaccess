@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^openbama\.org
+RewriteRule ^(.*)$ http://www.openbama.org/$1 [R=301,L]
+
+RewriteCond $1 !^(index\.php|img|js|bills|xajax_js|css|robots\.txt)
+RewriteRule ^(.*)$ /index.php/$1 [L]

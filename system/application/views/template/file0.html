@@ -1,0 +1,94 @@
+<script type="text/javascript"> 
+ 
+    YAHOO.OpenBama.Data2 = {
+        billactions2: [
+        
+        
+ 
+        {action_date:new Date("01/14/2010"), action_text:"Read for the first time and referred to the Senate committee on Health"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("02/02/2010"), action_text:"Read for the second time and placed on the calendar"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("03/30/2010"), action_text:"Unfinished Business"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("03/30/2010"), action_text:"Motion to Carry Over as Unfinished Business adopted Voice Vote"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Third Reading Passed"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Little (Z) Amendment Offered"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Motion to Adopt adopted Roll Call 618"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Motion to Read a Third Time and Pass adopted Roll Call 620"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Petition to Close Debate"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/01/2010"), action_text:"Little (Z) Amendment adopted Roll Call 619."}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/06/2010"), action_text:"Engrossed"}
+ 
+    
+        ,
+ 
+        {action_date:new Date("04/06/2010"), action_text:"Read for the first time and referred to the House of Representatives committee on Health"}
+ 
+            ]
+    }
+ 
+alert('test');
+    
+    YAHOO.util.Event.addListener(window, "load", function() {
+        YAHOO.OpenBama.Bill_Actions = function() {
+            var myColumnDefs = [
+ 
+                {key:"action_date", formatter:YAHOO.widget.DataTable.formatDate, sortable:true, sortOptions:{defaultDir:YAHOO.widget.DataTable.CLASS_DESC},resizeable:true},
+                {key:"action_text", sortable:true, resizeable:true}
+            ];
+ 
+            var myDataSource = new YAHOO.util.DataSource(YAHOO.OpenBama.Data2.billactions2);
+            myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSARRAY;
+            myDataSource.responseSchema = {
+                fields: ["action_date","action_text"]
+            };
+ 
+            var myDataTable = new YAHOO.widget.DataTable("actions_div",
+            myColumnDefs, myDataSource, {caption:"Actions"});
+ 
+            return {
+                oDS: myDataSource,
+                oDT: myDataTable
+            };
+        }();
+    });
+ 
+</script> 
