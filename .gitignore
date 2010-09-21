@@ -19,12 +19,6 @@
 *.rar
 *.tar
 *.zip
-*.cache
-*.bak
-*.exp
-system/logs/*
-system/application/cache/*
-
 
 # Logs and databases #
 ######################
@@ -38,4 +32,12 @@ system/application/cache/*
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# MISC #
+########
 robots.txt
+*.cache
+*.bak
+*.exp
+system/logs/*
+system/application/cache/*
