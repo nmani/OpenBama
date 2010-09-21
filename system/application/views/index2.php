@@ -99,7 +99,7 @@
                     </div>
                     <?php echo form_close(); ?>
                 </div>
-                <div class="tabbertab" title="Status">
+                <div class="tabbertab" title="Current Status">
                     <?php echo form_open('search/status'); ?>
                     <select id="status_dropdownlist" name="status_dropdownlist">
                         <option value="0">-- Select a status --</option>
@@ -187,7 +187,7 @@
                     if($bill_tag_cloud) {
                         foreach($bill_tag_cloud as $tag) {
 
-                            $myArray[] = array($tag->tag_count,$tag->tag_name,base_url().'index.php/tagcloud/display/'.$tag->id);
+                            $myArray[] = array($tag->tag_count,$tag->tag_name,base_url().INDEX_TO_INCLUDE.'tagcloud/display/'.$tag->id);
 
                         }
                         $configArray = array (

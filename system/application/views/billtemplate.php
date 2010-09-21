@@ -53,7 +53,7 @@
             <div id="nav" class="box">
                 <ul>
                     <li id="active"><a href="<?php echo base_url().'index.php'; ?>">Home</a></li> <!-- Active link -->
-                    <li><a href="<?php echo base_url().'index.php/bill/all'; ?>">Bills</a></li>
+                    <li><a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>">Bills</a></li>
                     <li><a href="#">Reps</a></li>
                     <li><a href="#">Senators</a></li>
                     <li><a href="#" class="nosep">Issues</a></li>

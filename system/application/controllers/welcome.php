@@ -5,8 +5,6 @@ class Welcome extends Controller {
     function Welcome() {
         parent::Controller();
         $this->load->library('Cache');
-
-
     }
     function test() {
         echo $this->uri->segment(1);

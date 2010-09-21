@@ -12,9 +12,9 @@
         <h2>Issues</h2>
 
         <strong>Sort by:</strong>
-        <a href="<?php echo base_url().'index.php/issue/index'; ?>">Name</a>
-        <a href="<?php echo base_url().'index.php/issue/viewed'; ?>">Most Viewed</a>
-        <a href="<?php echo base_url().'index.php/issue/bills'; ?>">Most Bills</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>">Name</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/viewed'; ?>">Most Viewed</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/bills'; ?>">Most Bills</a>
         <br/>
         <br/>
         <?php if($issues): ?>
@@ -23,7 +23,7 @@
 
                 <?php
 
-                echo '<a href="'.base_url().'index.php/issue/display/'.$issue->id.'">'.$issue->subject.'</a> ('.$issue->bill_count.' bills)('.$issue->page_views.' view(s))<br>';
+                echo '<a href="'.base_url().INDEX_TO_INCLUDE.'issue/display/'.$issue->id.'">'.$issue->subject.'</a> ('.$issue->bill_count.' bills)('.$issue->page_views.' view(s))<br>';
 
                 ?>
 

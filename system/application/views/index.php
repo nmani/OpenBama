@@ -292,7 +292,7 @@ if(!file_exists($representative_image_file_name)) {
                 if($bill_tag_cloud) {
                 	foreach($bill_tag_cloud as $tag) {
 
-                		$myArray[] = array($tag->tag_count,$tag->tag_name,base_url().'index.php/tagcloud/display/'.$tag->id);
+                		$myArray[] = array($tag->tag_count,$tag->tag_name,base_url().INDEX_TO_INCLUDE.'tagcloud/display/'.$tag->id);
 
                 	}
                 	$configArray = array (
@@ -324,7 +324,7 @@ if(!file_exists($representative_image_file_name)) {
             About OpenBama.org
         </h3>
         <p>
-            OpenBama.org is a website designed to be used by the public to track and research the legislation the Alabama Legislature is considering to become law. To learn more about OpenBama.org and how it works please click <a href="<?php echo base_url().'index.php/about/index'; ?>">here</a>.
+            OpenBama.org is a website designed to be used by the public to track and research the legislation the Alabama Legislature is considering to become law. To learn more about OpenBama.org and how it works please click <a href="<?php echo base_url().INDEX_TO_INCLUDE.'about/index'; ?>">here</a>.
             <br>
             <br>
         <div style="text-align:center">
@@ -341,7 +341,7 @@ if(!file_exists($representative_image_file_name)) {
 	Most Viewed Bill
 	</h3>
 	<p>
-            <a href="<?php echo base_url().'index.php/bill/display/'.$most_viewed_bill->id; ?>"><u><?php echo strtoupper($most_viewed_bill->bill_type).$most_viewed_bill->number; ?>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/display/'.$most_viewed_bill->id; ?>"><u><?php echo strtoupper($most_viewed_bill->bill_type).$most_viewed_bill->number; ?>
                     - Subject: <?php echo $most_viewed_bill->subject; ?></u></a> &nbsp;(<?php echo $most_viewed_bill->page_view_count; ?> views)
 <br>
                 <?php echo $most_viewed_bill->description; ?>
@@ -353,7 +353,7 @@ if(!file_exists($representative_image_file_name)) {
         <h3>Most Popular Bill <a href="#" onmouseout="popUp(event,'most_popular_help_div')" onmouseover="popUp(event,'most_popular_help_div')" onclick="return false"><img border="0" src="<?php echo base_url().'img/questionmark.png'; ?>" width="15" height="15" /></a></h3>
         <p>
 
-            <a href="<?php echo base_url().'index.php/bill/display/'.$popular_bill->id; ?>"><u><?php echo strtoupper($popular_bill->bill_type).$popular_bill->number; ?>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/display/'.$popular_bill->id; ?>"><u><?php echo strtoupper($popular_bill->bill_type).$popular_bill->number; ?>
                     - Subject: <?php echo $popular_bill->subject; ?></u></a>
             <br>
             <?php echo $popular_bill->description; ?>
@@ -361,19 +361,19 @@ if(!file_exists($representative_image_file_name)) {
         <h3>Most Popular Senator <a href="#" onmouseout="popUp(event,'most_popular_help_div')" onmouseover="popUp(event,'most_popular_help_div')" onclick="return false"><img border="0" src="<?php echo base_url().'img/questionmark.png'; ?>" width="15" height="15" /></a></h3>
         <p>
             <?php echo '<center><img src="'.$senator_image_file_name.'" width="69" height="100" title="'.$popular_senator->full_name.'" alt="'.$popular_senator->full_name.'" /><br>'; ?>
-            <a href="<?php echo base_url().'index.php/person/display/'.$popular_senator->id; ?>"><u><?php echo $popular_senator->full_name;?>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/display/'.$popular_senator->id; ?>"><u><?php echo $popular_senator->full_name;?>
                 <?php echo '['.substr($popular_senator->party,0,1).', '.$popular_senator->district.']'; ?></u></a></center>
         </p>
         <h3>Most Popular Representative <a href="#" onmouseout="popUp(event,'most_popular_help_div')" onmouseover="popUp(event,'most_popular_help_div')" onclick="return false"><img border="0" src="<?php echo base_url().'img/questionmark.png'; ?>" width="15" height="15" /></a></h3>
         <p>
             <?php echo '<center><img src="'.$representative_image_file_name.'" width="69" height="100" title="'.$popular_representative->full_name.'" alt="'.$popular_representative->full_name.'" /><br>'; ?>
-            <a href="<?php echo base_url().'index.php/person/display/'.$popular_representative->id; ?>"><u><?php echo $popular_representative->full_name;?>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/display/'.$popular_representative->id; ?>"><u><?php echo $popular_representative->full_name;?>
                 <?php echo '['.substr($popular_representative->party,0,1).', '.$popular_representative->district.']'; ?></u></a></center>
         </p>
         <h3>Most Viewed Issue (last 7 days)</h3>
         <p>
 		<?php if($most_viewed_issue): ?>
-            <a href="<?php echo base_url().'index.php/issue/display/'.$most_viewed_issue->id; ?>"><u><?php echo $most_viewed_issue->subject; ?></u></a> &nbsp;(<?php echo $most_viewed_issue->page_view_count; ?> views)
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/display/'.$most_viewed_issue->id; ?>"><u><?php echo $most_viewed_issue->subject; ?></u></a> &nbsp;(<?php echo $most_viewed_issue->page_view_count; ?> views)
 			<?php else: ?>
 			None
 			<?php endif; ?>

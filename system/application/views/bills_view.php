@@ -3,9 +3,9 @@
 
 <div style="-moz-border-radius:8px; -webkit-border-radius:8px;background:#fafafa;border: solid 1px #ddd; margin:0; padding:0.8em;">
     <h3>
-        <a href="<?php echo base_url().'index.php/bill/display/'.$row->id; ?>"><u><?php echo strtoupper($row->bill_type).$row->number; ?>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/display/'.$row->id; ?>"><u><?php echo strtoupper($row->bill_type).$row->number; ?>
                 - Subject: <?php echo $row->subject; ?></u></a></h3>
-    <strong>Sponsor:</strong>&nbsp;<a href="<?php echo base_url().'index.php/person/display/'.$row->sponsor_id; ?>"><?php echo $row->sponsor_name.'</a><br>'; ?>
+    <strong>Sponsor:</strong>&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/display/'.$row->sponsor_id; ?>"><?php echo $row->sponsor_name.'</a><br>'; ?>
     <p>
         
         <b>Current Status:</b> <?php echo $row->current_alison_status; ?><br><br>

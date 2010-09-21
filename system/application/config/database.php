@@ -37,9 +37,9 @@
 $active_group = "default";
 $active_record = TRUE;
 
-$db['default']['hostname'] = "localhost";
+$db['default']['hostname'] = "jacksonserver";
 $db['default']['username'] = "root";
-$db['default']['password'] = "";
+$db['default']['password'] = "col317";
 $db['default']['database'] = "openbama";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";

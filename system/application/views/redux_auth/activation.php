@@ -3,7 +3,7 @@ Hi <?php echo $username; ?>! This e-mail is to confirm your new OpenBama Login.
 <br><br>
 Click the link below to activate your account:
 <br><br>
-  <a href="<?php echo base_url().'index.php/auth/activate/'.$activation; ?>"><?php echo base_url().'index.php/auth/activate/'.$activation; ?></a>
+  <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/activate/'.$activation; ?>"><?php echo base_url().INDEX_TO_INCLUDE.'auth/activate/'.$activation; ?></a>
 <br><br>
 If you're unable to click the link, please copy and paste it into a new browser window.
 <br><br><br>

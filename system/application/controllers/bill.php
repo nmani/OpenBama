@@ -6,6 +6,7 @@ class Bill extends Controller {
         $this->load->model('bill_model');
         $this->load->library('pagination');
         $this->load->library('Cache');
+		$this->load->library('user_agent');
     }
 
     function get_most_popular_bill() {
@@ -90,8 +91,8 @@ class Bill extends Controller {
         }else {
             $data['support_vote_onclick'] = '';
             $data['no_support_vote_onclick'] = '';
-            $data['support_vote_href'] = base_url().'index.php/auth/login/'.$return_url;
-            $data['no_support_vote_href'] = base_url().'index.php/auth/login/'.$return_url;
+            $data['support_vote_href'] = base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url;
+            $data['no_support_vote_href'] = base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url;
 
             $data['support_status'] = '';
         }
@@ -100,7 +101,9 @@ class Bill extends Controller {
         $ip = $_SERVER['REMOTE_ADDR'];
 
         //Record this viewing
-        $this->bill_model->insert_bill_view($ip,$bill_id);
+        if (!$this->agent->is_robot()) {
+            $this->bill_model->insert_bill_view($ip,$bill_id);
+        }
 
         $bill = $this->bill_model->get_Bill_Detail_By_ID($bill_id);
 
@@ -143,18 +146,21 @@ class Bill extends Controller {
 
     function all() {
 
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'intro';
+        }
 
-
-        $sort = $this->uri->segment(3);
-        $row = $this->uri->segment(4);
-
-        if(!$row) $row = 0;
-        if(!$sort) $sort = 'intro';
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
         if (!$bills = $this->cache->get('all-bills'.$sort.$row)) {
-        //echo("Cache miss!");
 
-        //This would be a really 'heavy' object (slow to generate)
+			//This would be a really 'heavy' object (slow to generate)
             $bills = $this->bill_model->get_All(DEFAULT_SESSION, $sort,'',$row);
 
             $this->cache->save('all-bills'.$sort.$row, $bills, NULL, 900);
@@ -175,7 +181,7 @@ class Bill extends Controller {
 
         }
 
-        $config['base_url']= base_url().'index.php/bill/all/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'bill/all?sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='50';
         $config['uri_segment'] = 4;
@@ -203,13 +209,17 @@ class Bill extends Controller {
     function bills() {
 
 
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'intro';
+        }
 
-        $sort = $this->uri->segment(3);
-        $row = $this->uri->segment(4);
-
-        if(!$row) $row = 0;
-
-        if(!$sort) $sort = 'intro';
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
         if (!$bills = $this->cache->get('bills-only-'.$sort.$row)) {
         //echo("Cache miss!");
@@ -225,7 +235,7 @@ class Bill extends Controller {
 
         $row_count = $this->bill_model->get_all_count(DEFAULT_SESSION, 'bills')->row_count;
 
-        $config['base_url']= base_url().'index.php/bill/bills/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'bill/bills?sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='50';
         $config['uri_segment'] = 4;
@@ -268,21 +278,23 @@ class Bill extends Controller {
 
     function resolutions() {
 
-
-
-        $sort = $this->uri->segment(3);
-
-        $row = $this->uri->segment(4);
-
-        if(!$row) $row = 0;
-
-        if(!$sort) $sort = 'intro';
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'intro';
+        }
+        
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
 
         $data['bills'] = $this->bill_model->get_All(DEFAULT_SESSION,$sort,'resolutions',$row);
         $row_count = $this->bill_model->get_all_count(DEFAULT_SESSION, 'resolutions')->row_count;
 
-        $config['base_url']= base_url().'index.php/bill/resolutions/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'bill/resolutions?sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='50';
         $config['uri_segment'] = 4;
@@ -324,19 +336,24 @@ class Bill extends Controller {
 
     function house() {
 
-        $sort = $this->uri->segment(3);
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'intro';
+        }
 
-        $row = $this->uri->segment(4);
-
-        if(!$row) $row = 0;
-        if(!$sort) $sort = 'intro';
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
 
         $data['bills'] = $this->bill_model->get_All(DEFAULT_SESSION,$sort,'house',$row);
 
         $row_count = $this->bill_model->get_all_count(DEFAULT_SESSION, 'house')->row_count;
 
-        $config['base_url']= base_url().'index.php/bill/house/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'bill/house?sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='50';
         $config['uri_segment'] = 4;
@@ -379,22 +396,23 @@ class Bill extends Controller {
 
     function senate() {
 
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'intro';
+        }
 
-
-
-        $sort = $this->uri->segment(3);
-
-        $row = $this->uri->segment(4);
-
-        if(!$row) $row = 0;
-        if(!$sort) $sort = 'intro';
-
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
         $data['bills'] = $this->bill_model->get_All(DEFAULT_SESSION,$sort,'senate',$row);
 
         $row_count = $this->bill_model->get_all_count(DEFAULT_SESSION, 'senate')->row_count;
 
-        $config['base_url']= base_url().'index.php/bill/senate/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'bill/senate?sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='50';
         $config['uri_segment'] = 4;

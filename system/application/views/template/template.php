@@ -12,7 +12,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
 
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/datatable/assets/skins/sam/datatable.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url().'index.php/css/main'; ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url().INDEX_TO_INCLUDE.'css/main'; ?>" />
         <script type="text/javascript" src="http://yui.yahooapis.com/2.8.1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
         <script type="text/javascript" src="http://yui.yahooapis.com/2.8.1/build/dragdrop/dragdrop-min.js"></script>
         <script type="text/javascript" src="http://yui.yahooapis.com/2.8.1/build/element/element-min.js"></script>
@@ -30,7 +30,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_viewed_bill_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/bill/get_most_viewed_bill'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/get_most_viewed_bill'; ?>";
                 //$url = 'http://localhost/OpenBama/index.php/bill/get_most_viewed_bill';
 
                 $('#'+ page_part_id).load($url,function() {
@@ -41,7 +41,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_popular_bill_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/bill/get_most_popular_bill'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/get_most_popular_bill'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -52,7 +52,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_popular_senator_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/person/get_most_popular_senator'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'person/get_most_popular_senator'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -63,7 +63,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_popular_representative_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/person/get_most_popular_representative'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'person/get_most_popular_representative'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -74,7 +74,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_viewed_issue_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/issue/get_most_viewed_issue'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'issue/get_most_viewed_issue'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -85,7 +85,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_viewed_senator_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/person/get_most_viewed_senator'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'person/get_most_viewed_senator'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -96,7 +96,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_most_viewed_representative_part(page_part_id){
 
-                $url = "<?php echo base_url().'index.php/person/get_most_viewed_representative'; ?>";
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'person/get_most_viewed_representative'; ?>";
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -107,7 +107,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
             function get_senators_part(page_part_id,filter,sort,rec_count){
 
-                $url = "<?php echo base_url().'index.php/person/senators_ajax/'; ?>"+filter+'/'+sort+'/'+rec_count+'/'+page_part_id;
+                $url = "<?php echo base_url().INDEX_TO_INCLUDE.'person/senators_ajax/'; ?>"+filter+'/'+sort+'/'+rec_count+'/'+page_part_id;
 
 
                 $('#'+ page_part_id).load($url,function() {
@@ -482,9 +482,9 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
                     $user_id = $user_profile->id;
                     $user_name = $user_profile->username;
-                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().'index.php/auth/logout">Log out</a>';
+                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().INDEX_TO_INCLUDE.'auth/logout">Log out</a>';
                 }else {
-                    echo '<a href="'.base_url().'index.php/auth/login/'.$return_url.'">Login</a> or create an <a href="'.base_url().'index.php/auth/register">account</a>';
+                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url.'">Login</a> or create an <a href="'.base_url().INDEX_TO_INCLUDE.'auth/register">account</a>';
                 }
 
                 ?>
@@ -495,19 +495,19 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
         </div>
         <div id="mainmenu">
             <a href="<?php echo base_url().'index.php'; ?>">Home</a>
-            <a href="<?php echo base_url().'index.php/bill/all'; ?>">Bills</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>">Bills</a>
 
-            <a href="<?php echo base_url().'index.php/person/senators/all'; ?>">Senators</a>
-            <a href="<?php echo base_url().'index.php/person/representatives/all'; ?>">Representatives</a>
-            <a href="<?php echo base_url().'index.php/committee/name'; ?>">Committees</a>
-            <a href="<?php echo base_url().'index.php/issue/index'; ?>">Issues</a>
-            <a href="<?php echo base_url().'index.php/vote/all'; ?>">Votes</a>
-           <!-- <a href="<?php echo base_url().'index.php/blog/index'; ?>">Blog</a> -->
-            <a href="<?php echo base_url().'index.php/about/index'; ?>">About OpenBama.org</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/senators/all'; ?>">Senators</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/representatives/all'; ?>">Representatives</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>">Committees</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>">Issues</a>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>">Votes</a>
+           <!-- <a href="<?php echo base_url().INDEX_TO_INCLUDE.'blog/index'; ?>">Blog</a> -->
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'about/index'; ?>">About OpenBama.org</a>
         </div>
         <?= $contents ?>
         <div id="footer">
-            <a href="<?php echo base_url().'index.php'; ?>">Home</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/bill/all'; ?>">Bills</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/person/senators/all'; ?>">Senators</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/person/representatives/all'; ?>">Representatives</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/committee/name'; ?>">Committees</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/issue/index'; ?>">Issues</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/vote/all'; ?>">Votes</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/about/index'; ?>">About OpenBama.org</a>&nbsp;|&nbsp;<a href="mailto:contact@openbama.org">Contact OpenBama.org</a>&nbsp;<!--|&nbsp;<a href="http://blog.openbama.org">Blog</a> --> <br/>&copy; OpenBama.org 2010<br/><br/>
+            <a href="<?php echo base_url().'index.php'; ?>">Home</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>">Bills</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/senators/all'; ?>">Senators</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/representatives/all'; ?>">Representatives</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>">Committees</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>">Issues</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>">Votes</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'about/index'; ?>">About OpenBama.org</a>&nbsp;|&nbsp;<a href="mailto:contact@openbama.org">Contact OpenBama.org</a>&nbsp;<!--|&nbsp;<a href="http://blog.openbama.org">Blog</a> --> <br/>&copy; OpenBama.org 2010<br/><br/>
         </div>
     </body>
 </html>

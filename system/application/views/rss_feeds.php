@@ -2,4 +2,4 @@
 
 <hr>
 <br>
-<a href="<?php echo base_url().'index.php/rss/new_bills'; ?>">New Bills introduced</a>
+<a href="<?php echo base_url().INDEX_TO_INCLUDE.'rss/new_bills'; ?>">New Bills introduced</a>

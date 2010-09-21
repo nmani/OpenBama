@@ -244,7 +244,7 @@
             About OpenBama.org
         </h3>
         <p>
-            OpenBama.org is a website designed to be used by the public to track and research the legislation the Alabama Legislature is considering to become law. To learn more about OpenBama.org and how it works please click <a href="<?php echo base_url().'index.php/about/index'; ?>">here</a>.
+            OpenBama.org is a website designed to be used by the public to track and research the legislation the Alabama Legislature is considering to become law. To learn more about OpenBama.org and how it works please click <a href="<?php echo base_url().INDEX_TO_INCLUDE.'about/index'; ?>">here</a>.
         </p>
         <?php $this->load->view('rss_feeds_side_view'); ?>
     </div>

@@ -443,11 +443,11 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
             var myRating = $("#slider").slider("value");
 
 
-            $.post("<?php echo base_url().'index.php/person/rate_them'; ?>", {
+            $.post("<?php echo base_url().INDEX_TO_INCLUDE.'person/rate_them'; ?>", {
                 person: <?php echo $member->id; ?>,
                 person_rating: myRating
             }, function() {
-                $('#person_rating_div').load("<?php echo base_url().'index.php/person/reload_rating/'; ?><?php echo $member->id; ?>/" + randomnumber);
+                $('#person_rating_div').load("<?php echo base_url().INDEX_TO_INCLUDE.'person/reload_rating/'; ?><?php echo $member->id; ?>/" + randomnumber);
             });
         });
     });
@@ -594,7 +594,7 @@ echo "<script type=\"text/javascript\">
         <br>
         <input type="submit" class="ob_button" value="Rate Them!" name="rate_them" id="rate_them" />
         <?php else: ?>
-        To rate this individual, please <a href="<?php echo base_url().'index.php/auth/login/'.$return_url; ?>">log in</a>.
+        To rate this individual, please <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url; ?>">log in</a>.
         <? endif;?>
 
         <div id="person_rating_div">
@@ -631,22 +631,22 @@ echo "<script type=\"text/javascript\">
                         <div style="float: left;padding: 5px;">
                             <?php echo '<img src="'.$image_file_name.'" width="69" height="100" title="'.$member->full_name.'" alt="'.$member->full_name.'" />'; ?>
                         </div><br><br><br><br>
-                        <?php if($member_bio): ?>
-                            <?php echo '<strong>Home City:</strong>'.$member_bio->home_city.', '.$member_bio->home_state.'<br>';
-                            echo '<strong>Birthday:</strong>'.$member_bio->birth_date;
+                        <?php if($vote_smart_bio): ?>
+                            <?php echo '<strong>Home City:</strong>'.$vote_smart_bio->candidate->homeCity.', '.$vote_smart_bio->candidate->homeState.'<br>';
+                            echo '<strong>Birthday:</strong>'.$vote_smart_bio->candidate->birthDate;
                             ?>
                         <h3>Family</h3>
 
-                            <?php echo $member_bio->family; ?>
+                            <?php echo $vote_smart_bio->candidate->family; ?>
                         <h3>Professional</h3>
-                            <?php echo $member_bio->profession; ?>
+                            <?php echo $vote_smart_bio->candidate->profession; ?>
                         <h3>Political</h3>
-                            <?php echo $member_bio->political; ?>
+                            <?php echo $vote_smart_bio->candidate->political; ?>
                         <h3>Organizations</h3>
-                            <?php echo $member_bio->org_membership; ?>
+                            <?php echo $vote_smart_bio->candidate->orgMembership; ?>
                         <h3>Religious/Congregation</h3>
-                            <?php echo $member_bio->religion.'<br>'; ?>
-                            <?php echo $member_bio->cong_membership; ?>
+                            <?php echo $vote_smart_bio->candidate->religion.'<br>'; ?>
+                            <?php echo $vote_smart_bio->candidate->congMembership; ?>
 
                         <h3>In the Blogs</h3>
                         <p>
@@ -703,9 +703,9 @@ echo "<script type=\"text/javascript\">
 
 
                             if ($committee->subcommittee_name) {
-                                echo ' &nbsp;&nbsp;&nbsp;Sub committee: '.'<a href="'.base_url().'index.php/committee/display/'.$committee->id.'">'.$committee->subcommittee_name.'</a>';
+                                echo ' &nbsp;&nbsp;&nbsp;Sub committee: '.'<a href="'.base_url().INDEX_TO_INCLUDE.'committee/display/'.$committee->id.'">'.$committee->subcommittee_name.'</a>';
                             }else {
-                                echo '<a href="'.base_url().'index.php/committee/display/'.$committee->id.'">'.$committee->committee_name.'</a>';
+                                echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/display/'.$committee->id.'">'.$committee->committee_name.'</a>';
                             }
 
 
@@ -725,7 +725,7 @@ echo "<script type=\"text/javascript\">
                     <div style="-moz-border-radius:8px; -webkit-border-radius:8px;background:#fafafa;border: solid 1px #ddd; margin:0; padding:0.8em">
                                 <?php
                                 echo '<table>';
-                                echo '<tr><td colspan="3"><a href="'.base_url().'index.php/vote/display/'.$vote->vote_id.'">'.strtoupper($vote->bill_number).'</a> - '.$vote->action_text.'</td></tr>';
+                                echo '<tr><td colspan="3"><a href="'.base_url().INDEX_TO_INCLUDE.'vote/display/'.$vote->vote_id.'">'.strtoupper($vote->bill_number).'</a> - '.$vote->action_text.'</td></tr>';
                                 echo '<tr style="border-bottom: 1px solid gray;"><td width="40%">';
                                 echo "<font color='green'>Ayes </font>".$vote->ayes." <font color='red'>Nayes</font> ".$vote->nays.'</td>';
                                 //echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -767,8 +767,8 @@ echo "<script type=\"text/javascript\">
                                 </td></tr>
                         </table>
                         <?php else: ?>
-                        <a href="<?php echo base_url().'index.php/auth/login'.$return_url; ?>">Login</a> or create an
-                        <a href="<?php echo base_url().'index.php/auth/register'; ?>">account</a> to add a comment.
+                        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/login'.$return_url; ?>">Login</a> or create an
+                        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/register'; ?>">account</a> to add a comment.
                         <?php endif; ?>
                     </div>
 
@@ -916,43 +916,47 @@ and Apache WebServer.
         <div class="contact_div">
             <h3>Contact Information</h3>
 
-            <?php if($member_addresses): ?>
-                <?php foreach($member_addresses as $address) : ?>
+            <?php if($vote_smart_addresses): ?>
+						
+                <?php foreach($vote_smart_addresses as $address) : ?>
                     <?php
-                    echo '<strong>'.$address->address_type.'</strong><br>'.$address->address_street.'<br>';
-                    echo $address->address_city.', '.$address->address_state.' '.$address->address_zip.'<br>';
-                    if($address->phone1) {
-                        echo $address->phone1.'<br>';
+					if (isset($address->address->type)){
+						echo '<strong>'.$address->address->type.'</strong><br>'.$address->address->street.'<br>';
+						echo $address->address->city.', '.$address->address->state.' '.$address->address->zip.'<br>';
+                    if(strlen($address->phone->phone1) > 0) {
+                        echo $address->phone->phone1.'<br>';
                     }
-                    if($address->phone2) {
-                        echo $address->phone2.'<br>';
+                    if(strlen($address->phone->phone2) > 0) {
+                        echo $address->phone->phone2.'<br>';
                     }
-                    if($address->fax1) {
-                        echo $address->fax1.'(Fax)<br>';
+                    if(strlen($address->phone->fax1) > 0) {
+                        echo $address->phone->fax1.'(Fax)<br>';
                     }
-                    if($address->fax2) {
-                        echo $address->fax2.' (Fax)<br>';
+                    if(strlen($address->phone->fax2) > 0) {
+                        echo $address->phone->fax2.' (Fax)<br>';
                     }
-                    if($address->ttyd) {
-                        echo $address->ttyd.' (ttyd)<br>';
+                    if(strlen($address->phone->ttyd) > 0) {
+                        echo $address->phone->ttyd.' (ttyd)<br>';
                     }
-                    echo '<br>';
+						echo '<br>';
+					}
                     ?>
                 <?php endforeach; ?>
             <?php endif; ?>
 
-            <?php if($member_webaddress): ?>
-                <?php foreach($member_webaddress as $e_address) : ?>
+            <?php if($vote_smart_webaddresses): ?>
 
-                    <?php if($e_address->web_address_type == 'Email') {
-                        echo '<strong>'.$e_address->web_address_type.'</strong><br>'.'<a href="mailto:'.$e_address->web_address.'">'.$e_address->web_address.'</a><br><br>';
-                    }else {
-                        if(strrpos($e_address->web_address,"legislature")) {
-                            echo '<strong>'.$e_address->web_address_type.'</strong><br>'.'<a href="'.$e_address->web_address.'">State website</a><br><br>';
+                <?php foreach($vote_smart_webaddresses as $e_address) : ?>
+
+                    <?php if($e_address->webAddressType == 'Email') {
+                        echo '<strong>'.$e_address->webAddressType.'</strong><br>'.'<a href="mailto:'.$e_address->webAddress.'">'.$e_address->webAddress.'</a><br><br>';
+                    }elseif($e_address->webAddressType == 'Website') {
+                        if(strrpos($e_address->webAddress,"legislature")) {
+                            echo '<strong>'.$e_address->webAddressType.'</strong><br>'.'<a href="'.$e_address->webAddress.'">State website</a><br><br>';
                         }
                         else {
 
-                            echo '<strong>'.$e_address->web_address_type.'</strong><br>'.'<a href="'.$e_address->web_address.'">'.$e_address->web_address.'</a><br><br>';
+                            echo '<strong>'.$e_address->webAddressType.'</strong><br>'.'<a href="'.$e_address->webAddress.'">'.$e_address->webAddress.'</a><br><br>';
                         }
                     }
                     ?>
@@ -978,7 +982,7 @@ and Apache WebServer.
 
             Follow the status of bills introduced by this legislator by subscribing to this RSS feed.<br>
 
-            <a href="<?php echo base_url().'index.php/rss/follow_legislator/'.$member->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'rss/follow_legislator/'.$member->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
 
         </div>
         <br/>

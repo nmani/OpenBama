@@ -267,9 +267,9 @@
 
                     $user_id = $user_profile->id;
                     $user_name = $user_profile->username;
-                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().'index.php/auth/logout">Log out</a>';
+                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().INDEX_TO_INCLUDE.'auth/logout">Log out</a>';
                 }else {
-                    echo '<a href="'.base_url().'index.php/auth/login">Login</a> or create an <a href="'.base_url().'index.php/auth/register">account</a>.';
+                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'auth/login">Login</a> or create an <a href="'.base_url().INDEX_TO_INCLUDE.'auth/register">account</a>.';
                 }
 
                 ?>
@@ -299,37 +299,37 @@
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/bill/all'; ?>" title="Bills">Bills</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>" title="Bills">Bills</a></li>
                     <li <?php if ($this->uri->segment(1) == 'person' && $this->uri->segment(2) == 'senators') {
                         echo 'class="current"';
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/person/senators/all'; ?>" title="Senators">Senators</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/senators/all'; ?>" title="Senators">Senators</a></li>
                     <li <?php if ($this->uri->segment(1) == 'person' && $this->uri->segment(2) == 'representatives') {
                         echo 'class="current"';
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/person/representatives/all'; ?>" title="Representatives">Representatives</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/representatives/all'; ?>" title="Representatives">Representatives</a></li>
                     <li <?php if ($this->uri->segment(1) == 'committee') {
                         echo 'class="current"';
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/committee/name'; ?>" title="Committees">Committees</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>" title="Committees">Committees</a></li>
                     <li <?php if ($this->uri->segment(1) == 'issue') {
                         echo 'class="current"';
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/issue/index'; ?>" title="Issues">Issues</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>" title="Issues">Issues</a></li>
                     <li <?php if ($this->uri->segment(1) == 'vote') {
                         echo 'class="current"';
 
                     }
                     else {echo '';
-                        } ?>><a href="<?php echo base_url().'index.php/vote/all'; ?>" title="Votes">Votes</a></li>
+                        } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>" title="Votes">Votes</a></li>
 
                 </ul>
 

@@ -349,9 +349,9 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
                                                     $user_id = $user_profile->id;
                                                     $user_name = $user_profile->username;
-                                                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().'index.php/auth/logout">Log out</a>';
+                                                    echo 'You are currently logged in as '.$user_name.'. <a href="'.base_url().INDEX_TO_INCLUDE.'auth/logout">Log out</a>';
                                                 }else {
-                                                    echo '<a href="'.base_url().'index.php/auth/login/'.$return_url.'">Login</a> or create an <a href="'.base_url().'index.php/auth/register">account</a>.';
+                                                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url.'">Login</a> or create an <a href="'.base_url().INDEX_TO_INCLUDE.'auth/register">account</a>.';
                                                 }
 
                                                 ?>
@@ -396,37 +396,37 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/bill/all'; ?>" title="Bills">Bills</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>" title="Bills">Bills</a></li>
                         <li <?php if ($this->uri->segment(1) == 'person' && $this->uri->segment(2) == 'senators') {
                             echo 'class="current"';
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/person/senators/all'; ?>" title="Senators">Senators</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/senators/all'; ?>" title="Senators">Senators</a></li>
                         <li <?php if ($this->uri->segment(1) == 'person' && $this->uri->segment(2) == 'representatives') {
                             echo 'class="current"';
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/person/representatives/all'; ?>" title="Representatives">Representatives</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/representatives/all'; ?>" title="Representatives">Representatives</a></li>
                         <li <?php if ($this->uri->segment(1) == 'committee') {
                             echo 'class="current"';
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/committee/name'; ?>" title="Committees">Committees</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>" title="Committees">Committees</a></li>
                         <li <?php if ($this->uri->segment(1) == 'issue') {
                             echo 'class="current"';
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/issue/index'; ?>" title="Issues">Issues</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>" title="Issues">Issues</a></li>
                         <li <?php if ($this->uri->segment(1) == 'vote') {
                             echo 'class="current"';
 
                         }
                         else {echo '';
-                            } ?>><a href="<?php echo base_url().'index.php/vote/all'; ?>" title="Votes">Votes</a></li>
+                            } ?>><a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>" title="Votes">Votes</a></li>
                         <!-- <li><a href="http://blog.openbama.org" title="Blog">Blog</a></li> -->
                     </ul>
 
@@ -437,7 +437,7 @@ $return_url = str_replace('/','-',$this->uri->uri_string());
 
 
                 <div id="footer">
-                    <a href="<?php echo base_url().'index.php'; ?>">Home</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/bill/all'; ?>">Bills</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/person/senators/all'; ?>">Senators</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/person/representatives/all'; ?>">Representatives</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/committee/name'; ?>">Committees</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/issue/index'; ?>">Issues</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/vote/all'; ?>">Votes</a>&nbsp;|&nbsp;<a href="<?php echo base_url().'index.php/about/index'; ?>">About OpenBama.org</a>&nbsp;|&nbsp;<a href="mailto:contact@openbama.org">Contact OpenBama.org</a>&nbsp;<!--|&nbsp;<a href="http://blog.openbama.org">Blog</a> --> <br>&copy; OpenBama.org 2010
+                    <a href="<?php echo base_url().'index.php'; ?>">Home</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/all'; ?>">Bills</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/senators/all'; ?>">Senators</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/representatives/all'; ?>">Representatives</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>">Committees</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'issue/index'; ?>">Issues</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>">Votes</a>&nbsp;|&nbsp;<a href="<?php echo base_url().INDEX_TO_INCLUDE.'about/index'; ?>">About OpenBama.org</a>&nbsp;|&nbsp;<a href="mailto:contact@openbama.org">Contact OpenBama.org</a>&nbsp;<!--|&nbsp;<a href="http://blog.openbama.org">Blog</a> --> <br>&copy; OpenBama.org 2010
                 </div>
             </div>
         </div>

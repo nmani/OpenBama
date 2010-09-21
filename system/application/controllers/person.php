@@ -7,6 +7,8 @@ class Person extends Controller {
         $this->load->model('person_model');
         $this->load->library('pagination');
         $this->load->library('Cache');
+		$this->load->library('votesmart');
+		$this->load->library('user_agent');
     }
 
     function get_most_viewed_senator() {
@@ -55,23 +57,38 @@ class Person extends Controller {
     }
 
     function senators() {
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'name';
+        }
+		
+        if (isset($_GET['filter'])) {
+            $filter = $_GET['filter'];
+        }else {
+            $filter = 'all';
+        }
 
-        $filter = $this->uri->segment(3);
-        $sort = $this->uri->segment(4);
-        $row = $this->uri->segment(5);
+		if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
+        //$filter = $_GET['filter'];
+        //$row = $_GET['per_page'];
 
-        if(!$sort) $sort = 'name';
+        //if(!$sort) $sort = 'name';
 
-        if(!$filter) $filter = 'all';
+        //if(!$filter) $filter = 'all';
 
-        if(!$row) $row = 0;
+        //if(!$row) $row = 0;
 
         $senators = $this->person_model->get_Senators(DEFAULT_SESSION, $filter, $sort,$row);
 
         $data['members'] = $senators;
         $row_count = $this->person_model->get_senators_count(DEFAULT_SESSION, $filter)->row_count;
 
-        $config['base_url']= base_url().'index.php/person/senators/'.$filter.'/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'person/senators?filter='.$filter.'&sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='10';
         $config['uri_segment'] = 5;
@@ -125,25 +142,30 @@ class Person extends Controller {
     }
 
     function representatives() {
+        if (isset($_GET['sort'])) {
+            $sort = $_GET['sort'];
+        }else {
+            $sort = 'name';
+        }
+		
+        if (isset($_GET['filter'])) {
+            $filter = $_GET['filter'];
+        }else {
+            $filter = 'all';
+        }
 
-
-
-        $filter = $this->uri->segment(3);
-        $sort = $this->uri->segment(4);
-        $row = $this->uri->segment(5);
-
-        if(!$sort) $sort = 'name';
-
-        if(!$filter) $filter = 'all';
-
-        if(!$row) $row = 0;
+		if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }
 
         $reps = $this->person_model->get_Representatives(DEFAULT_SESSION,$sort,$filter,$row);
         $data['members'] = $reps;
 
         $row_count = $this->person_model->get_representatives_count(DEFAULT_SESSION, $filter)->row_count;
 
-        $config['base_url']= base_url().'index.php/person/representatives/'.$filter.'/'.$sort.'/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'person/representatives?filter='.$filter.'&sort='.$sort;
         $config['total_rows']= $row_count;
         $config['per_page']='10';
         $config['uri_segment'] = 5;
@@ -182,10 +204,35 @@ class Person extends Controller {
 
             redirect('error/error_404');
         }
+		
+		
+		$this->votesmart->setAPIKey(VOTE_SMART_API_KEY);
+		
+		// Get the SimpleXML object
+		$memberBio = $this->votesmart->query('CandidateBio.getBio', Array(
+						'candidateId' => $member->votesmart_id
+				));
+				
+		$data['vote_smart_bio'] = $memberBio;
+		
+		$memberWebAddresses = $this->votesmart->query('Address.getOfficeWebAddress', Array(
+						'candidateId' => $member->votesmart_id
+				));
+				
+		$data['vote_smart_webaddresses'] = $memberWebAddresses;
+		
+		$memberAddresses = $this->votesmart->query('Address.getOffice', Array(
+						'candidateId' => $member->votesmart_id
+				));
+				
+		$data['vote_smart_addresses'] = $memberAddresses;
 
         $ip = $_SERVER['REMOTE_ADDR'];
 
-        $this->person_model->insert_person_view($ip, $person_id);
+		//Record this viewing
+        if (!$this->agent->is_robot()) {
+            $this->person_model->insert_person_view($ip, $person_id);
+        }
 
         $data['member'] = $member;
         $data['comments'] = $this->person_model->get_Person_Comments($person_id);
@@ -193,9 +240,10 @@ class Person extends Controller {
         $data['cosponsored_bills'] =  $this->person_model->get_CoSponsored_Bills($person_id,DEFAULT_SESSION);
         $data['committees'] = $this->person_model->get_person_committees($person_id,DEFAULT_SESSION);
         $data['votes'] = $this->person_model->get_person_votes($person_id,DEFAULT_SESSION);
-        $data['member_bio'] = $this->person_model->get_person_bio_by_id($person_id);
-        $data['member_addresses'] = $this->person_model->get_person_addresses_by_id($person_id);
-        $data['member_webaddress'] = $this->person_model->get_person_electronic_addresses_by_id($person_id);
+        //$data['member_bio'] = $this->person_model->get_person_bio_by_id($person_id);
+        //$data['member_addresses'] = $this->person_model->get_person_addresses_by_id($person_id);
+        //$data['member_webaddress'] = $this->person_model->get_person_electronic_addresses_by_id($person_id);
+		
         if($logged_in) {
             $data['user_rating'] = $this->person_model->get_user_person_rating($person_id,$user_id);
         }else {

@@ -4,17 +4,17 @@
 
         if (option_selected == 'All'){
 
-            window.location = "<?php echo base_url().'index.php/bill/all/intro'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/all?sort=intro&per_page=0'; ?>";
         }else if(option_selected == 'House'){
-            window.location = "<?php echo base_url().'index.php/bill/house/intro'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/house?sort=intro&per_page=0'; ?>";
         }
         else if(option_selected == 'Senate'){
-            window.location = "<?php echo base_url().'index.php/bill/senate/intro'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/senate?sort=intro&per_page=0'; ?>";
         }
         else if(option_selected == 'Bills Only'){
-            window.location = "<?php echo base_url().'index.php/bill/bills/intro'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/bills?sort=intro&per_page=0'; ?>";
         }else if(option_selected == 'Resolutions Only'){
-            window.location = "<?php echo base_url().'index.php/bill/resolutions/intro'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'bill/resolutions?sort=intro&per_page=0'; ?>";
         }
     }
 </script>
@@ -73,11 +73,11 @@
                 </form>
                 
                 <strong>Sort by:</strong>
-                <a href="<?php echo base_url().'index.php/bill/'.$this->uri->segment(2).'/intro'; ?>">Introduced</a>
-                <a href="<?php echo base_url().'index.php/bill/'.$this->uri->segment(2).'/recent'; ?>">Recent Activity</a>
-                <a href="<?php echo base_url().'index.php/bill/'.$this->uri->segment(2).'/viewed'; ?>">Most Viewed</a>
-                <a href="<?php echo base_url().'index.php/bill/'.$this->uri->segment(2).'/popular'; ?>">Popular</a>
-                <a href="<?php echo base_url().'index.php/bill/'.$this->uri->segment(2).'/most'; ?>">Most Sponsors</a>
+                <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/'.$this->uri->segment(2).'?sort=intro&per_page=0'; ?>">Introduced</a>
+                <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/'.$this->uri->segment(2).'?sort=recent&per_page=0'; ?>">Recent Activity</a>
+                <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/'.$this->uri->segment(2).'?sort=viewed&per_page=0'; ?>">Most Viewed</a>
+                <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/'.$this->uri->segment(2).'?sort=popular&per_page=0'; ?>">Popular</a>
+                <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/'.$this->uri->segment(2).'?sort=most&per_page=0'; ?>">Most Sponsors</a>
 
         <br/>
         <br/>

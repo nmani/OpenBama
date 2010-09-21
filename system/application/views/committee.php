@@ -123,7 +123,7 @@
                 <div id="section-1" style="display: block;">
                     <?php if($subcommittees): ?>
                         <?php foreach($subcommittees as $subcommittee) : ?>
-                            <?php echo '<a href="'.base_url().'index.php/committee/display/'.$subcommittee->id.'">'.$subcommittee->subcommittee_name.'</a><br>'; ?>
+                            <?php echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/display/'.$subcommittee->id.'">'.$subcommittee->subcommittee_name.'</a><br>'; ?>
 
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -136,7 +136,7 @@
 
                     <?php if($members): ?>
                         <?php foreach($members as $member) : ?>
-                            <?php echo '<a href="'.base_url().'index.php/person/display/'.$member->person_id.'">'.$member->full_name;
+                            <?php echo '<a href="'.base_url().INDEX_TO_INCLUDE.'person/display/'.$member->person_id.'">'.$member->full_name;
                             echo '['.$member->party.', '.$member->district.']'.'</a> ('.$member->role.')<br>'; ?>
 
                         <?php endforeach; ?>
@@ -159,7 +159,7 @@
         <div class="take_action_div">
             <h3>Take Action</h3>
 
-            <?php echo '<a href="'.base_url().'index.php/committee/contact_sheet/'.$committee->id.'" target="_blank">Contact sheet</a>'; ?>
+            <?php echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/contact_sheet/'.$committee->id.'" target="_blank">Contact sheet</a>'; ?>
             <br>
             <?php
             if($contact_info) {
@@ -196,7 +196,7 @@
                     echo '<strong>Location:</strong>'.$meeting->meeting_location.'<br>';
                     echo '<strong>Date:</strong>'.date("m/d/Y",strtotime($meeting->meeting_date)).'<br>';
                     echo '<strong>Time:</strong>'.$meeting->meeting_time.'<br>';
-                    echo '<a href="'.base_url().'index.php/committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
+                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
 
                 }
 

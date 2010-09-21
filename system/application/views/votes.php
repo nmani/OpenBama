@@ -5,17 +5,17 @@
 
         if (option_selected == 'All'){
 
-            window.location = "<?php echo base_url().'index.php/vote/all'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'vote/all'; ?>";
         }else if(option_selected == 'House'){
-            window.location = "<?php echo base_url().'index.php/vote/house'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'vote/house'; ?>";
         }
         else if(option_selected == 'Senate'){
-            window.location = "<?php echo base_url().'index.php/vote/senate'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'vote/senate'; ?>";
         }
         else if(option_selected == 'Passed'){
-            window.location = "<?php echo base_url().'index.php/vote/pass'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'vote/pass'; ?>";
         }else if(option_selected == 'Failed'){
-            window.location = "<?php echo base_url().'index.php/vote/fail'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'vote/fail'; ?>";
         }
     }
 </script>
@@ -63,9 +63,9 @@
         </form>
 
         <strong>Sort by:</strong>
-        <a href="<?php echo base_url().'index.php/vote/'.$this->uri->segment(2).'/new'; ?>">Newest</a>
-        <a href="<?php echo base_url().'index.php/vote/'.$this->uri->segment(2).'/old'; ?>">Oldest</a>
-        <a href="<?php echo base_url().'index.php/vote/'.$this->uri->segment(2).'/popular'; ?>">Popular Bills</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/'.$this->uri->segment(2).'?sort=new'; ?>">Newest</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/'.$this->uri->segment(2).'?sort=old'; ?>">Oldest</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/'.$this->uri->segment(2).'?sort=popular'; ?>">Popular Bills</a>
 
         <br/>
         <br/>
@@ -80,7 +80,7 @@
                 Most Viewed Vote
             </h3>
 
-            <a href="<?php echo base_url().'index.php/vote/display/'.$most_viewed_vote->id; ?>"><u><?php echo 'Roll Call '.$most_viewed_vote->number.', Bill: '.strtoupper($most_viewed_vote->bill_label); ?></u></a> &nbsp;(<?php echo $most_viewed_vote->page_view_count; ?> views)
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'vote/display/'.$most_viewed_vote->id; ?>"><u><?php echo 'Roll Call '.$most_viewed_vote->number.', Bill: '.strtoupper($most_viewed_vote->bill_label); ?></u></a> &nbsp;(<?php echo $most_viewed_vote->page_view_count; ?> views)
             <br>
             <strong>Regarding: </strong><?php echo $most_viewed_vote->action_text; ?>
 

@@ -94,7 +94,7 @@
         </div>
         <hr>
         <?php if ($vote) {
-            echo '<h2><a href="'.base_url().'index.php/bill/display/'.$vote->bill_id.'">'.strtoupper($vote->bill_label).'</a></h2>';
+            echo '<h2><a href="'.base_url().INDEX_TO_INCLUDE.'bill/display/'.$vote->bill_id.'">'.strtoupper($vote->bill_label).'</a></h2>';
             echo $vote->description;
         }
         ?>
@@ -115,7 +115,7 @@
                                     <?php foreach($roll_call_votes as $member_vote) : ?>
                                 <tr>
                                     <td>
-                                                <?php echo '<a href="'.base_url().'index.php/person/display/'.$member_vote->person_id.'">'.substr($member_vote->full_name,4);
+                                                <?php echo '<a href="'.base_url().INDEX_TO_INCLUDE.'person/display/'.$member_vote->person_id.'">'.substr($member_vote->full_name,4);
                                                 echo '['.substr($member_vote->party,0,1).', '.$member_vote->district.']'.'</a>'; ?>
                                     </td>
                                     <td><?php echo $member_vote->vote_text; ?></td>

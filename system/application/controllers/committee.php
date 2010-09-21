@@ -5,6 +5,7 @@ class Committee extends Controller {
         parent::Controller();
         $this->load->model('committee_model');
         $this->load->library('pagination');
+		$this->load->library('user_agent');
     }
 
     function index() {
@@ -14,10 +15,11 @@ class Committee extends Controller {
     }
 
     function name() {
-       
-        $row = $this->uri->segment(3);
-
-        if(!$row) $row = 0;
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }       
 
         $data['committees'] = $this->committee_model->get_all_committees('name',$row);
         $data['committee_meetings_house'] = $this->committee_model->get_all_committee_meetings_for_house();
@@ -25,7 +27,7 @@ class Committee extends Controller {
 
         $row_count = $this->committee_model->get_all_committees_count()->row_count;
 
-        $config['base_url']= base_url().'index.php/committee/name/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'committee/name?';
         $config['total_rows']= $row_count;
         $config['per_page']='10';
         $config['uri_segment'] = 3;
@@ -44,9 +46,11 @@ class Committee extends Controller {
 
     function viewed() {
         
-        $row = $this->uri->segment(3);
-
-        if(!$row) $row = 0;
+        if (isset($_GET['per_page'])) {
+            $row = $_GET['per_page'];
+        }else {
+            $row = 0;
+        }   
 
         $data['committees'] = $this->committee_model->get_all_committees('viewed',$row);
         $data['committee_meetings_house'] = $this->committee_model->get_all_committee_meetings_for_house();
@@ -54,7 +58,7 @@ class Committee extends Controller {
 
         $row_count = $this->committee_model->get_all_committees_count()->row_count;
 
-        $config['base_url']= base_url().'index.php/committee/viewed/';
+        $config['base_url']= base_url().INDEX_TO_INCLUDE.'committee/viewed?';
         $config['total_rows']= $row_count;
         $config['per_page']='10';
         $config['uri_segment'] = 3;
@@ -81,7 +85,9 @@ class Committee extends Controller {
         $ip = $_SERVER['REMOTE_ADDR'];
 
         //Record this viewing
-        $this->committee_model->insert_committee_view($ip,$committee_id);
+        if (!$this->agent->is_robot()){
+			$this->committee_model->insert_committee_view($ip,$committee_id);
+        }
 
         $committee = $this->committee_model->get_committee_by_id($committee_id);
 

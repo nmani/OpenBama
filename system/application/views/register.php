@@ -151,7 +151,7 @@
             <tr>
 
                 <td colspan="2">
-                    <?php echo '<a target="_blank" href="'.base_url().'index.php/person/find_legislator">Not sure what districts you are in?</a>';
+                    <?php echo '<a target="_blank" href="'.base_url().INDEX_TO_INCLUDE.'person/find_legislator">Not sure what districts you are in?</a>';
                     ?>
                 </td>
             </tr>

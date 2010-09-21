@@ -64,8 +64,8 @@
                     <input type="submit" id="Login" value="Login" name="Login" class="ob_button" /></td>
 
             </tr>
-            <tr><td><a href='<?php print base_url().'index.php/auth/register'; ?>'>Create an account</a></td></tr>
-            <tr><td><a href='<?php print base_url().'index.php/auth/forgotten_password'; ?>'>Forgot your password?</a></td></tr>
+            <tr><td><a href='<?php print base_url().INDEX_TO_INCLUDE.'auth/register'; ?>'>Create an account</a></td></tr>
+            <tr><td><a href='<?php print base_url().INDEX_TO_INCLUDE.'auth/forgotten_password'; ?>'>Forgot your password?</a></td></tr>
 
         </tfoot>
 

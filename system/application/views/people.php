@@ -1,19 +1,25 @@
-
+<?php
+        if (isset($_GET['filter'])) {
+            $current_filter = $_GET['filter'];
+        }else {
+            $current_filter = 'all';
+        }
+?>
 <script language="javascript" type="text/javascript">
     function filterList(option_selected){
 
 
         if (option_selected == 'All'){
 
-            window.location = "<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/all'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter=all'; ?>";
         }else if(option_selected == 'Democrat'){
-            window.location = "<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/dem'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter=dem'; ?>";
         }
         else if(option_selected == 'Republican'){
-            window.location = "<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/repub'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter=repub'; ?>";
         }
         else if(option_selected == 'Other Party'){
-            window.location = "<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/other'; ?>";
+            window.location = "<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter=other'; ?>";
         }
     }
 </script>
@@ -47,22 +53,22 @@
         <form name="filter_dropdown_form">
             <strong>Filter by:</strong><select name="people_filter_drop_down" onchange="filterList(filter_dropdown_form.people_filter_drop_down.options[selectedIndex].value);">
 
-                <?php if ($this->uri->segment(3) == 'all'): ?>
+                <?php if ($current_filter == 'all'): ?>
                 <option selected>All</option>
                 <option>Democrat</option>
                 <option>Republican</option>
                 <option>Other Party</option>
-                <?php elseif($this->uri->segment(3) == 'dem'): ?>
+                <?php elseif($current_filter == 'dem'): ?>
                 <option>All</option>
                 <option selected>Democrat</option>
                 <option>Republican</option>
                 <option>Other Party</option>
-                <?php elseif($this->uri->segment(3) == 'repub'): ?>
+                <?php elseif($current_filter == 'repub'): ?>
                 <option>All</option>
                 <option>Democrat</option>
                 <option selected>Republican</option>
                 <option>Other Party</option>
-                <?php elseif($this->uri->segment(3) == 'other'): ?>
+                <?php elseif($current_filter == 'other'): ?>
                 <option>All</option>
                 <option>Democrat</option>
                 <option>Republican</option>
@@ -75,10 +81,10 @@
         
         
         <strong>Sort by:</strong>
-        <a href="<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/'.$this->uri->segment('3').'/name'; ?>">Name</a>
-        <a href="<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/'.$this->uri->segment('3').'/popular'; ?>">Popular</a>
-        <a href="<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/'.$this->uri->segment('3').'/district'; ?>">District</a>
-        <a href="<?php echo base_url().'index.php/person/'.$this->uri->segment('2').'/'.$this->uri->segment('3').'/viewed'; ?>">Most Viewed</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter='.$current_filter.'&sort=name'; ?>">Name</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter='.$current_filter.'&sort=popular'; ?>">Popular</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter='.$current_filter.'&sort=district'; ?>">District</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/'.$this->uri->segment('2').'?filter='.$current_filter.'&sort=viewed'; ?>">Most Viewed</a>
         
         
         <br/><br/>

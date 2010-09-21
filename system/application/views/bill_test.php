@@ -298,7 +298,7 @@ if(count($bill_version_types) > 0) {
                                             echo '<h3>Summary</h3>';
                                             echo '<p>';
                                             echo $bill->description.'<br>';
-                                            echo '<a href="'.base_url().'index.php/bill/fulltext/'.$bill->id.'">View the full text >></a>';
+                                            echo '<a href="'.base_url().INDEX_TO_INCLUDE.'bill/fulltext/'.$bill->id.'">View the full text >></a>';
                                             echo '</p>';
 
                                             echo '<h3>Last Action</h3>';
@@ -315,7 +315,7 @@ if(count($bill_version_types) > 0) {
                                             echo '<p>';
                                             echo '<center><img src="'.$image_file_name.'" width="69" height="100" title="'.$bill->sponsor.'" alt="'.$bill->sponsor.'" /><br>';
 
-                                            echo '<a href="'.base_url().'index.php/person/display/'.$bill->sponsor_id.'"><strong>'.$bill->sponsor.'['.$bill->party.', '.$bill->district.']</strong></a><br></center>';
+                                            echo '<a href="'.base_url().INDEX_TO_INCLUDE.'person/display/'.$bill->sponsor_id.'"><strong>'.$bill->sponsor.'['.$bill->party.', '.$bill->district.']</strong></a><br></center>';
                                             echo '</p>';
 
                                             echo '<h3>Cosponsors</h3>';
@@ -328,7 +328,7 @@ if(count($bill_version_types) > 0) {
 
                                                 foreach($cosponsors as $cosponsor) {
 
-                                                    echo '<a href="'.base_url().'index.php/person/display/'.$cosponsor->id.'">'.$cosponsor->full_name.'['.substr($cosponsor->party,0,1).', '.$cosponsor->district.']</a> (Sponsor date - '.date("M j, Y",strtotime($cosponsor->sponsor_date)).')<br>';
+                                                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'person/display/'.$cosponsor->id.'">'.$cosponsor->full_name.'['.substr($cosponsor->party,0,1).', '.$cosponsor->district.']</a> (Sponsor date - '.date("M j, Y",strtotime($cosponsor->sponsor_date)).')<br>';
                                                 }
 
                                             }else {
@@ -341,7 +341,7 @@ if(count($bill_version_types) > 0) {
                                                 echo '<p>';
                                                 foreach($committees as $committee) {
 
-                                                    echo '<a href="'.base_url().'index.php/committee/display/'.$committee->id.'">'.$committee->committee_name.'</a><br>';
+                                                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/display/'.$committee->id.'">'.$committee->committee_name.'</a><br>';
                                                 }
                                                 echo '</p>';
                                             }
@@ -351,7 +351,7 @@ if(count($bill_version_types) > 0) {
 
                                                 echo '<p>';
                                                 foreach($related_bills as $related) {
-                                                    echo '<a href="'.base_url().'index.php/bill/display/'.$related->id.'">'.strtoupper($related->bill_type).$related->number.'</a><br>';
+                                                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'bill/display/'.$related->id.'">'.strtoupper($related->bill_type).$related->number.'</a><br>';
                                                 }
                                                 echo '</p>';
                                             }else {
@@ -394,9 +394,9 @@ if(count($bill_version_types) > 0) {
                                         echo '<td valign="top" style="border-bottom: 1px solid gray;">';
                                         if ($row->roll_call_id) {
                                             if (strrpos($row->action_text, "Roll Call")) {
-                                                $action_string = str_replace('Roll Call', '<a href="'.base_url().'index.php/vote/display/'.$row->roll_call_id.'">Roll Call</a>',$row->action_text);
+                                                $action_string = str_replace('Roll Call', '<a href="'.base_url().INDEX_TO_INCLUDE.'vote/display/'.$row->roll_call_id.'">Roll Call</a>',$row->action_text);
                                             }else {
-                                                $action_string = $row->action_text.' <a href="'.base_url().'index.php/vote/display/'.$row->roll_call_id.'">Roll Call '.$row->roll_call_number.'</a>';
+                                                $action_string = $row->action_text.' <a href="'.base_url().INDEX_TO_INCLUDE.'vote/display/'.$row->roll_call_id.'">Roll Call '.$row->roll_call_number.'</a>';
                                             }
 
                                             echo $action_string;
@@ -443,8 +443,8 @@ if(count($bill_version_types) > 0) {
                                 </td></tr>
                         </table>
                         <?php else: ?>
-                        <a href="<?php echo base_url().'index.php/auth/login/'.$return_url; ?>">Login</a> or create an
-                        <a href="<?php echo base_url().'index.php/auth/register'; ?>">account</a> to add a comment.
+                        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/login/'.$return_url; ?>">Login</a> or create an
+                        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/register'; ?>">account</a> to add a comment.
                         <?php endif; ?>
 
 
@@ -547,7 +547,7 @@ if(count($bill_version_types) > 0) {
         <div class="summary_content_div">
             <h3>Full Text of The Bill</h3>
 
-            <?php echo '<a href="'.base_url().'index.php/bill/fulltext/'.$bill->id.'">View the full text >></a>'; ?>
+            <?php echo '<a href="'.base_url().INDEX_TO_INCLUDE.'bill/fulltext/'.$bill->id.'">View the full text >></a>'; ?>
 
         </div>
         <br/>
@@ -559,7 +559,7 @@ if(count($bill_version_types) > 0) {
                 <?php
                 foreach($committee_meetings as $meeting) {
 
-                    echo '<a href="'.base_url().'index.php/committee/display/'.$meeting->committee_id.'">'.$meeting->committee_name.'</a><br>';
+                    echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/display/'.$meeting->committee_id.'">'.$meeting->committee_name.'</a><br>';
                     echo '<strong>Location:</strong>'.$meeting->meeting_location.'<br>';
                     echo '<strong>Date:</strong>'.date("m/d/Y",strtotime($meeting->meeting_date)).'<br>';
                     echo '<strong>Time:</strong>'.$meeting->meeting_time.'<br>';
@@ -577,7 +577,7 @@ if(count($bill_version_types) > 0) {
 
             <?php
             foreach($tags as $tag) {
-                echo '<a href="'.base_url().'index.php/tagcloud/display/'.$tag->id.'">'.$tag->tag_name.'</a><br>';
+                echo '<a href="'.base_url().INDEX_TO_INCLUDE.'tagcloud/display/'.$tag->id.'">'.$tag->tag_name.'</a><br>';
 
             }
 
@@ -610,7 +610,7 @@ if(count($bill_version_types) > 0) {
 
             Follow the status of this bill by subscribing to this RSS feed.<br>
 
-            <a href="<?php echo base_url().'index.php/rss/follow_bill/'.$bill->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'rss/follow_bill/'.$bill->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
 
         </div>
 

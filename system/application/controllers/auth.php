@@ -36,7 +36,7 @@ class Auth extends Controller {
             $activate = $this->redux_auth->activate($code_from_link);
 
             if ($activate) {
-                $this->session->set_flashdata('message', '<p class="success">Your Account is now activated, please <a href="'.base_url().'index.php/auth/login">login</a>.</p>');
+                $this->session->set_flashdata('message', '<p class="success">Your Account is now activated, please <a href="'.base_url().INDEX_TO_INCLUDE.'.auth/login">login</a>.</p>');
                 redirect('auth/activate');
             }
             else {

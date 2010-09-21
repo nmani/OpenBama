@@ -1,1 +1,1 @@
-<div id="content">    <hr>    <h2>Your Profile</h2>    <h3>Actions</h3>    <p>        <a href="<?php echo base_url().'index.php/auth/change_password'; ?>">Change Password.</a>    </p>    </div>
+<div id="content">    <hr>    <h2>Your Profile</h2>    <h3>Actions</h3>    <p>        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'auth/change_password'; ?>">Change Password.</a>    </p>    </div>

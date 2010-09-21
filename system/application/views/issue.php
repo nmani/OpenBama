@@ -115,7 +115,7 @@
 
             Follow the status of the bills associated with this issue by subscribing to this RSS feed.<br>
 
-            <a href="<?php echo base_url().'index.php/rss/follow_issue/'.$issue->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'rss/follow_issue/'.$issue->id; ?>"><img src="<?php echo base_url().'img/rss-icon.png'; ?>" border="0" /></a>&nbsp;Subscribe
 
         </div>
 

@@ -11,7 +11,7 @@
     <p>
         <?php if ($bills) {
             foreach($bills as $bill) {
-                echo '<a href="'.base_url().'index.php/bill/display/'.$bill->bill_id.'">'.strtoupper($bill->label).'</a><br>';
+                echo '<a href="'.base_url().INDEX_TO_INCLUDE.'bill/display/'.$bill->bill_id.'">'.strtoupper($bill->label).'</a><br>';
 
             }
         }else {

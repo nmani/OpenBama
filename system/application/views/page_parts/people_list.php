@@ -12,7 +12,7 @@
          ?>
 <div style="-moz-border-radius:8px; -webkit-border-radius:8px;background:#fafafa;border: solid 1px #ddd; margin:0; padding:0.8em">
     <h3>
-        <a href="<?php echo base_url().'index.php/person/display/'.$member->id; ?>"><u><?php echo $member->full_name;?>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/display/'.$member->id; ?>"><u><?php echo $member->full_name;?>
                      <?php echo '['.$member->party.', '.$member->district.']'; ?></u></a></h3>
     <p><span>
             <table width="100%">

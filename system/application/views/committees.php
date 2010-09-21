@@ -4,8 +4,8 @@
         <hr>
         <h2>Committees</h2>
         <div style="float:left;">
-        <strong>Sort by:</strong><a href="<?php echo base_url().'index.php/committee/name'; ?>">Name</a>
-        <a href="<?php echo base_url().'index.php/committee/viewed'; ?>">Most Viewed</a>
+        <strong>Sort by:</strong><a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/name'; ?>">Name</a>
+        <a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/viewed'; ?>">Most Viewed</a>
         </div>
         <br/>
         <br/>
@@ -22,7 +22,7 @@
                 Most Viewed Committee
             </h3>
 
-            <a href="<?php echo base_url().'index.php/committee/display/'.$most_viewed_committee->id; ?>"><u>
+            <a href="<?php echo base_url().INDEX_TO_INCLUDE.'committee/display/'.$most_viewed_committee->id; ?>"><u>
                         <?php echo $most_viewed_committee->committee_name.' ';
                         if ($most_viewed_committee->subcommittee_name) {
                             echo '('.$most_viewed_committee.subcommittee_name.')';
@@ -52,7 +52,7 @@
                         echo '<strong>Location:</strong>'.$meeting->meeting_location.'<br>';
                         echo '<strong>Date:</strong>'.date("m/d/Y",strtotime($meeting->meeting_date)).'<br>';
                         echo '<strong>Time:</strong>'.$meeting->meeting_time.'<br>';
-                        echo '<a href="'.base_url().'index.php/committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
+                        echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
 
                     }
 
@@ -74,7 +74,7 @@
                         echo '<strong>Location:</strong>'.$meeting->meeting_location.'<br>';
                         echo '<strong>Date:</strong>'.date("m/d/Y",strtotime($meeting->meeting_date)).'<br>';
                         echo '<strong>Time:</strong>'.$meeting->meeting_time.'<br>';
-                        echo '<a href="'.base_url().'index.php/committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
+                        echo '<a href="'.base_url().INDEX_TO_INCLUDE.'committee/meeting/'.$meeting->id.'">View Details >></a><br><br>';
 
                     }
 

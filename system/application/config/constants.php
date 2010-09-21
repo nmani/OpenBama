@@ -38,9 +38,13 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('DEFAULT_SESSION','1051');
 define('DEFAULT_SESSION_TITLE','2010 Regular Session');
+
+//define('MEMBER_IMAGE_LOCATION','C:\\xampp\\htdocs\\OpenBama\\img\\members\\');
+define('MEMBER_IMAGE_LOCATION','C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\OpenBama\\img\\members\\');
+define('BILLS_FILE_LOCATION','C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\OpenBama\\bills\\');
 define('FULL_TEXT_SERVER','jacksonsonline.net');
 define('FULL_TEXT_SERVER_PORT',9312);
-define('MEMBER_IMAGE_LOCATION','/home/sjackson/public_html/img/members/');
-//define('MEMBER_IMAGE_LOCATION','C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\OpenBama\\img\\members\\');
+define('INDEX_TO_INCLUDE','index.php/');
+define('VOTE_SMART_API_KEY','bf85cc88aa021aa07e2db6690734c6b5');
 /* End of file constants.php */
 /* Location: ./system/application/config/constants.php */

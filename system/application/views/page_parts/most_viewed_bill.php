@@ -1,7 +1,7 @@
 <?php if ($most_viewed_bill): ?>
 
     <h3>Most Viewed Bill</h3>
-    <a href="<?php echo base_url().'index.php/bill/display/'.$most_viewed_bill->id; ?>">
+    <a href="<?php echo base_url().INDEX_TO_INCLUDE.'bill/display/'.$most_viewed_bill->id; ?>">
         <u>
             <?php echo strtoupper($most_viewed_bill->bill_type).$most_viewed_bill->number; ?>
             - Subject: 

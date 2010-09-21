@@ -6,6 +6,7 @@ class Issue extends Controller {
         parent::Controller();
         $this->load->model('issue_model');
         $this->load->library('Cache');
+		$this->load->library('user_agent');
     }
 
     function get_most_viewed_issue() {
@@ -32,7 +33,9 @@ class Issue extends Controller {
         $ip = $_SERVER['REMOTE_ADDR'];
 
         //Record this viewing
-        $this->issue_model->insert_issue_view($ip,$issue_id);
+        if (!$this->agent->is_robot()){
+			$this->issue_model->insert_issue_view($ip,$issue_id);
+        }
 
         $issue = $this->issue_model->get_issue_by_id($issue_id);
 

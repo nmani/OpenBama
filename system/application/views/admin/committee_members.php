@@ -45,11 +45,11 @@
     <table width="100%">
         <?php foreach($committee_members as $member) : ?>
         <tr>
-            <td><a href="<?php echo base_url().'index.php/person/display/'.$member->person_id; ?>" target="_blank"><?php echo $member->full_name; ?></a></td>
+            <td><a href="<?php echo base_url().INDEX_TO_INCLUDE.'person/display/'.$member->person_id; ?>" target="_blank"><?php echo $member->full_name; ?></a></td>
             <td><?php echo $member->committee_name; ?></td>
             <td><?php echo $member->subcommittee_name; ?></td>
             <td><?php echo $member->role; ?></td>
-            <td><a href="<?php echo base_url().'index.php/admin/delete_committee_member/'.$member->id; ?>">Delete</a></td>
+            <td><a href="<?php echo base_url().INDEX_TO_INCLUDE.'admin/delete_committee_member/'.$member->id; ?>">Delete</a></td>
         </tr>
         <?php endforeach; ?>
     </table>
