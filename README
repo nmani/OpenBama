@@ -8,7 +8,7 @@ state government.
 REQUIREMENTS
 --------------------------------
 *	PHP version 4.3.2 or newer (I tried to run with 5.3 but received errors.  Stick to 5.2.*.)
-*	MySql 4.1+
+*	MySQL 4.1+
 *	For text search feature to work, you will need to install Sphinx Search (http://sphinxsearch.com/).
 
 INSTALL STEPS
