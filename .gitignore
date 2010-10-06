@@ -41,3 +41,8 @@ robots.txt
 *.exp
 system/logs/*
 system/application/cache/*
+
+# Keep the passwords a secret #
+system/application/config/config.php
+system/application/config/database.php
+system/application/config/constants.php
